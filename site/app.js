@@ -36,12 +36,16 @@
       const card = document.createElement('div');
       card.className = 'card';
       card.dataset.path = a.path;
-      const t = document.createElement('h3');
-      t.textContent = a.title;
+      card.title = a.title;
+
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+
       const d = document.createElement('span');
       d.className = 'date';
       d.textContent = a.date;
-      card.appendChild(t);
+
+      card.appendChild(dot);
       card.appendChild(d);
       card.onclick = () => select(a);
       list.appendChild(card);
