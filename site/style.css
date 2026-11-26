@@ -34,7 +34,8 @@ body {
 
 .tabs { display: flex; gap: 6px; }
 .tab {
-  padding: 5px 14px; border: none; background: none;
+  appearance: none; -webkit-appearance: none;
+  padding: 5px 14px; border: 0; background: transparent;
   color: var(--muted); cursor: pointer;
   font-size: 13px; line-height: 1.6; transition: color .15s;
 }
