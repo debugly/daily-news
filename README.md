@@ -2,8 +2,8 @@
 
 按分类归档的中文内容简报，覆盖三类：
 
-- **每日新闻**（`news/`）：每天 3 条全球科技与互联网新闻 + 2 条重要国际新闻
-- **macOS 周报**（`macos/`）：macOS 音视频开发技术周报
+- **科技要闻**（`news/`）：每天 3 条全球科技与互联网新闻 + 2 条重要国际新闻
+- **音视频周报**（`macos/`）：macOS 音视频开发技术周报
 - **AI 热门项目**（`ai/`）：GitHub AI 开源项目周报
 
 ## 在线门户
@@ -12,8 +12,8 @@
 
 ## 内容与目录
 
-- `news/YYYY/MM/YYYY-MM-DD.md`：每日新闻，按北京时间归档
-- `macos/YYYY/MM/YYYY-MM-DD.md`：macOS 周报，按统计周期归档
+- `news/YYYY/MM/YYYY-MM-DD.md`：科技要闻，按北京时间归档
+- `macos/YYYY/MM/YYYY-MM-DD.md`：音视频周报，按统计周期归档
 - `ai/YYYY/MM/YYYY-MM-DD.md`：AI 热门项目周报，按统计周期归档
 - `.github/workflows/auto-merge.yml`：自动合并 Pull Request
 

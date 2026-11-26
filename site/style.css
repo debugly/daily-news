@@ -27,19 +27,19 @@ body {
   background: var(--card); border-bottom: 1px solid var(--border);
 }
 .header-inner {
-  max-width: 1200px; margin: 0 auto; padding: 8px 20px;
+  max-width: 1200px; margin: 0 auto; padding: 13px 20px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
 .brand { font-size: 17px; font-weight: 700; letter-spacing: .5px; white-space: nowrap; }
 
 .tabs { display: flex; gap: 6px; }
 .tab {
-  padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border);
-  background: var(--card); color: var(--muted); cursor: pointer;
-  font-size: 13px; line-height: 1.6; transition: all .15s;
+  padding: 5px 14px; border: none; background: none;
+  color: var(--muted); cursor: pointer;
+  font-size: 13px; line-height: 1.6; transition: color .15s;
 }
-.tab:hover { border-color: var(--accent); color: var(--accent); }
-.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.tab:hover { color: var(--accent); }
+.tab.active { color: var(--accent); font-weight: 600; }
 
 /* two-column layout */
 .layout {
@@ -48,8 +48,8 @@ body {
 }
 
 .list-pane {
-  position: sticky; top: 56px;
-  max-height: calc(100vh - 72px); overflow-y: auto;
+  position: sticky; top: 66px;
+  max-height: calc(100vh - 82px); overflow-y: auto;
 }
 
 /* timeline list */

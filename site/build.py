@@ -13,8 +13,8 @@ except ImportError:
     markdown = None
 
 CATEGORIES = [
-    ("news", "每日新闻"),
-    ("macos", "macOS 周报"),
+    ("news", "科技要闻"),
+    ("macos", "音视频周报"),
     ("ai", "AI 热门项目"),
 ]
 
