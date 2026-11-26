@@ -26,16 +26,16 @@
 
   function renderList() {
     const items = data.articles.filter(a => a.slug === current);
-    reader.hidden = true;
-    list.hidden = false;
     list.innerHTML = '';
     if (!items.length) {
       list.innerHTML = '<p class="empty">暂无内容</p>';
+      reader.innerHTML = '<p class="empty">暂无内容</p>';
       return;
     }
     for (const a of items) {
       const card = document.createElement('div');
       card.className = 'card';
+      card.dataset.path = a.path;
       const t = document.createElement('h3');
       t.textContent = a.title;
       const d = document.createElement('span');
@@ -43,37 +43,40 @@
       d.textContent = a.date;
       card.appendChild(t);
       card.appendChild(d);
-      card.onclick = () => renderReader(a);
+      card.onclick = () => select(a);
       list.appendChild(card);
     }
+    select(items[0]);
+  }
+
+  function select(a) {
+    for (const card of list.querySelectorAll('.card')) {
+      card.classList.toggle('active', card.dataset.path === a.path);
+    }
+    renderReader(a);
+    scrollToReader();
+  }
+
+  function scrollToReader() {
+    const header = document.querySelector('.site-header');
+    const offset = header ? header.offsetHeight + 8 : 0;
+    const y = reader.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   }
 
   function renderReader(a) {
-    list.hidden = true;
-    reader.hidden = false;
     reader.innerHTML = '';
-
-    const back = document.createElement('button');
-    back.className = 'back';
-    back.textContent = '← 返回列表';
-    back.onclick = () => { list.hidden = false; reader.hidden = true; };
-
     const h = document.createElement('h2');
     h.textContent = a.title;
-
     const meta = document.createElement('div');
     meta.className = 'meta';
     meta.textContent = a.category + ' · ' + a.date;
-
     const body = document.createElement('div');
     body.className = 'article-body';
     body.innerHTML = a.html;
-
-    reader.appendChild(back);
     reader.appendChild(h);
     reader.appendChild(meta);
     reader.appendChild(body);
-    window.scrollTo(0, 0);
   }
 
   renderTabs();

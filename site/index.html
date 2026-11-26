@@ -8,17 +8,19 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="wrap">
-      <h1>资讯门户</h1>
-      <p class="subtitle">每日新闻 · macOS 周报 · AI 热门项目</p>
+    <div class="header-inner">
+      <div class="brand">资讯门户</div>
+      <nav class="tabs" id="tabs"></nav>
     </div>
   </header>
 
-  <nav class="tabs" id="tabs"></nav>
-
   <main class="wrap">
-    <section id="list" class="list"></section>
-    <article id="reader" class="reader" hidden></article>
+    <div class="layout">
+      <aside class="list-pane">
+        <section id="list" class="list"></section>
+      </aside>
+      <article id="reader" class="reader"></article>
+    </div>
   </main>
 
   <footer class="site-footer">

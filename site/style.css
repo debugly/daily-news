@@ -19,51 +19,60 @@ body {
   line-height: 1.7;
 }
 
-.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-.site-header { padding: 48px 0 20px; text-align: center; }
-.site-header h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
-.site-header .subtitle { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
-
-.tabs {
-  display: flex; justify-content: center; gap: 10px;
-  padding: 12px 20px; margin: 0 0 24px;
-  position: sticky; top: 0; background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  z-index: 10;
+/* header */
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--card); border-bottom: 1px solid var(--border);
 }
+.header-inner {
+  max-width: 1200px; margin: 0 auto; padding: 8px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand { font-size: 17px; font-weight: 700; letter-spacing: .5px; white-space: nowrap; }
+
+.tabs { display: flex; gap: 6px; }
 .tab {
-  padding: 8px 18px; border-radius: 999px; border: 1px solid var(--border);
+  padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border);
   background: var(--card); color: var(--muted); cursor: pointer;
-  font-size: 14px; transition: all .15s;
+  font-size: 13px; line-height: 1.6; transition: all .15s;
 }
 .tab:hover { border-color: var(--accent); color: var(--accent); }
 .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-.list { display: flex; flex-direction: column; gap: 12px; padding-bottom: 40px; }
-.card {
-  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-  padding: 16px 20px; cursor: pointer; transition: box-shadow .15s, border-color .15s;
+/* two-column layout */
+.layout {
+  display: grid; grid-template-columns: 320px 1fr; gap: 20px;
+  align-items: start; padding: 20px 0 40px;
 }
-.card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(37, 99, 235, .08); }
-.card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
-.card .date { color: var(--muted); font-size: 13px; }
-.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+
+.list-pane {
+  position: sticky; top: 56px;
+  max-height: calc(100vh - 72px); overflow-y: auto;
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+}
+.list { display: flex; flex-direction: column; }
+.card {
+  padding: 12px 16px; cursor: pointer; border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent; transition: background .12s;
+}
+.card:last-child { border-bottom: none; }
+.card:hover { background: var(--accent-soft); }
+.card.active { background: var(--accent-soft); border-left-color: var(--accent); }
+.card h3 { margin: 0 0 3px; font-size: 14px; font-weight: 600; line-height: 1.45; }
+.card .date { color: var(--muted); font-size: 12px; }
+.empty { text-align: center; color: var(--muted); padding: 32px 16px; font-size: 13px; }
 
 .reader {
   background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-  padding: 28px 32px; margin-bottom: 40px;
+  padding: 24px 32px; min-height: 400px;
 }
 .reader h2 { margin: 0 0 6px; font-size: 22px; line-height: 1.4; }
 .reader .meta {
   color: var(--muted); font-size: 13px; margin-bottom: 20px; padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
 }
-.back {
-  background: none; border: none; color: var(--accent); cursor: pointer;
-  font-size: 14px; padding: 0; margin-bottom: 16px;
-}
-.back:hover { text-decoration: underline; }
 
 .article-body h1, .article-body h2, .article-body h3 { line-height: 1.4; }
 .article-body h2 { font-size: 19px; margin: 26px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
@@ -79,12 +88,13 @@ body {
 .article-body pre { background: #f3f4f6; padding: 12px 16px; border-radius: 8px; overflow-x: auto; }
 .article-body img { max-width: 100%; }
 
-.site-footer { padding: 24px 20px 40px; text-align: center; color: var(--muted); font-size: 13px; }
+.site-footer { padding: 16px 20px 40px; text-align: center; color: var(--muted); font-size: 13px; }
 .site-footer a { color: var(--accent); }
 
-@media (max-width: 640px) {
-  .site-header { padding: 32px 0 16px; }
-  .tabs { gap: 6px; overflow-x: auto; justify-content: flex-start; }
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; padding-top: 12px; }
+  .list-pane { position: static; max-height: none; }
+  .reader { min-height: 0; padding: 20px; }
+  .tabs { overflow-x: auto; }
   .tab { white-space: nowrap; }
-  .reader { padding: 20px; }
 }
