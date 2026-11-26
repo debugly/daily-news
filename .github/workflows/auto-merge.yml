@@ -1,0 +1,32 @@
+name: Auto Merge
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR="${{ github.event.pull_request.number }}"
+          state="$(gh pr view "$PR" --json state --jq .state)"
+          echo "PR #${PR} state=${state}"
+          if [ "$state" != "OPEN" ]; then
+            echo "Nothing to merge."
+            exit 0
+          fi
+          mergeable="$(gh pr view "$PR" --json mergeable --jq .mergeable)"
+          if [ "$mergeable" != "MERGEABLE" ]; then
+            echo "PR not mergeable (${mergeable}); skipping."
+            exit 0
+          fi
+          gh pr merge "$PR" --merge --delete-branch
