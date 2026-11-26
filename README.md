@@ -6,6 +6,10 @@
 - **macOS 周报**（`macos/`）：macOS 音视频开发技术周报
 - **AI 热门项目**（`ai/`）：GitHub AI 开源项目周报
 
+## 在线门户
+
+分类浏览入口：<https://debugly.github.io/daily-news/>
+
 ## 内容与目录
 
 - `news/YYYY/MM/YYYY-MM-DD.md`：每日新闻，按北京时间归档
