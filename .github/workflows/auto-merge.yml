@@ -16,6 +16,7 @@ jobs:
       - name: Merge pull request
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           PR="${{ github.event.pull_request.number }}"
           state="$(gh pr view "$PR" --json state --jq .state)"
